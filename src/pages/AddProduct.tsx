@@ -13,13 +13,13 @@ export function AddProduct() {
           <label className="block text-sm font-medium text-gray-700">Product Name</label>
           <input
             type="text"
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500"
+            className="mt-1 p-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500"
           />
         </div>
 
         <div>
           <label className="block text-sm font-medium text-gray-700">Category</label>
-          <select className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500">
+          <select className="mt-1 p-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500">
             <option>Grains</option>
             <option>Vegetables</option>
             <option>Fruits</option>
@@ -35,7 +35,7 @@ export function AddProduct() {
             </div>
             <input
               type="text"
-              className="pl-7 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500"
+              className="pl-7  p-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500"
               placeholder="0.00"
             />
           </div>
@@ -45,7 +45,7 @@ export function AddProduct() {
           <label className="block text-sm font-medium text-gray-700">Quantity Available</label>
           <input
             type="text"
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500"
+            className="mt-1  p-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500"
             placeholder="e.g., 100 kg"
           />
         </div>

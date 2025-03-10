@@ -48,9 +48,9 @@ export function ChatBot() {
   useEffect(() => {
     if (isOpen && messages.length === 0) {
       setMessages([
-        { 
-          role: 'assistant', 
-          content: t('chat.welcome', 'Welcome to the Farming Assistant! How can I help you with your agricultural queries today?') 
+        {
+          role: 'assistant',
+          content: t('chat.welcome', 'Welcome to the Farming Assistant! How can I help you with your agricultural queries today? You Can Change Language by Clicking on Language icon.')
         }
       ]);
     }
@@ -81,9 +81,9 @@ export function ChatBot() {
     i18n.changeLanguage(languageCode);
     setShowLanguageSelector(false);
     setMessages(prev => [
-      ...prev, 
-      { 
-        role: 'assistant', 
+      ...prev,
+      {
+        role: 'assistant',
         content: t('chat.languageChanged', 'Language changed successfully. How can I help you?')
       }
     ]);
@@ -108,7 +108,7 @@ export function ChatBot() {
               {t('chat.title', 'Farming Assistant')}
             </Dialog.Title>
             <div className="flex items-center space-x-2">
-              <button 
+              <button
                 onClick={() => setShowLanguageSelector(!showLanguageSelector)}
                 className="text-gray-500 hover:text-gray-700 transition-colors p-1"
                 title={t('chat.changeLanguage', 'Change Language')}
@@ -128,11 +128,10 @@ export function ChatBot() {
                   <button
                     key={lang.code}
                     onClick={() => changeLanguage(lang.code)}
-                    className={`text-left px-2 py-1 sm:px-3 sm:py-2 rounded-md transition-colors text-sm ${
-                      i18n.language === lang.code 
-                        ? 'bg-green-100 text-green-800' 
+                    className={`text-left px-2 py-1 sm:px-3 sm:py-2 rounded-md transition-colors text-sm ${i18n.language === lang.code
+                        ? 'bg-green-100 text-green-800'
                         : 'hover:bg-gray-100'
-                    }`}
+                      }`}
                   >
                     <div className="font-medium">{lang.name}</div>
                     <div className="text-xs text-gray-600">{lang.nativeName}</div>
@@ -146,16 +145,14 @@ export function ChatBot() {
             {messages.map((message, index) => (
               <div
                 key={index}
-                className={`flex ${
-                  message.role === 'user' ? 'justify-end' : 'justify-start'
-                }`}
+                className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'
+                  }`}
               >
                 <div
-                  className={`max-w-[85%] sm:max-w-[80%] rounded-lg p-3 text-sm sm:text-base ${
-                    message.role === 'user'
+                  className={`max-w-[85%] sm:max-w-[80%] rounded-lg p-3 text-sm sm:text-base ${message.role === 'user'
                       ? 'bg-green-600 text-white'
                       : 'bg-gray-100 text-gray-900'
-                  }`}
+                    }`}
                 >
                   {message.content}
                 </div>
@@ -195,6 +192,9 @@ export function ChatBot() {
               </button>
             </form>
           </div>
+
+
+
         </Dialog.Content>
       </Dialog.Portal>
     </Dialog.Root>

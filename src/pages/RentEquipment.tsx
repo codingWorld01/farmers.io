@@ -11,7 +11,7 @@ export function RentEquipment() {
       <form className="space-y-6">
         <div>
           <label className="block text-sm font-medium text-gray-700">Equipment Type</label>
-          <select className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500">
+          <select className="mt-1  p-1  block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500">
             <option>Tractor</option>
             <option>Harvester</option>
             <option>Plough</option>
@@ -26,14 +26,14 @@ export function RentEquipment() {
               <label className="block text-xs text-gray-500">Start Date</label>
               <input
                 type="date"
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500"
+                className="mt-1  p-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500"
               />
             </div>
             <div>
               <label className="block text-xs text-gray-500">End Date</label>
               <input
                 type="date"
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500"
+                className="mt-1  p-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500"
               />
             </div>
           </div>
@@ -43,7 +43,7 @@ export function RentEquipment() {
           <label className="block text-sm font-medium text-gray-700">Location</label>
           <input
             type="text"
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500"
+            className="mt-1 p-1  block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500"
             placeholder="Enter your location"
           />
         </div>
@@ -63,12 +63,12 @@ export function RentEquipment() {
             <input
               type="text"
               placeholder="Full Name"
-              className="block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500"
+              className="block  p-1 w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500"
             />
             <input
               type="tel"
               placeholder="Phone Number"
-              className="block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500"
+              className="block p-1  w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500"
             />
           </div>
         </div>

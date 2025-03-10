@@ -28,34 +28,6 @@ export async function getChatResponse(messages: { role: 'user' | 'assistant'; co
       },
     ];
     
-    // Prepare conversation history for Gemini
-    const history = [];
-    
-    // Add all previous messages except the last one
-    for (let i = 0; i < messages.length - 1; i++) {
-      const msg = messages[i];
-      history.push({
-        role: msg.role === 'user' ? 'user' : 'model',
-        parts: [{ text: msg.content }],
-      });
-    }
-    
-    // Get the last user message
-    const lastUserMessage = messages[messages.length - 1];
-    if (lastUserMessage.role !== 'user') {
-      throw new Error('Last message must be from user');
-    }
-    
-    // Start chat session
-    const chat = model.startChat({
-      generationConfig: {
-        temperature: 0.7,
-        maxOutputTokens: 500,
-      },
-      safetySettings,
-      history: history.length > 0 ? history : undefined,
-    });
-    
     // Get language name based on language code
     const languageMap: {[key: string]: string} = {
       'en': 'English',
@@ -75,11 +47,46 @@ export async function getChatResponse(messages: { role: 'user' | 'assistant'; co
     // Prepare system prompt with language instruction
     const systemPrompt = `You are a helpful farming assistant that provides advice about agriculture, crop management, and farming best practices. Your responses should be culturally relevant to Indian farmers. Respond in ${languageName}.`;
     
-    // Combine system instructions with user message
-    const userMessageWithContext = `${systemPrompt}\n\nUser query: ${lastUserMessage.content}`;
+    // Get the last user message
+    const lastUserMessage = messages[messages.length - 1];
+    if (lastUserMessage.role !== 'user') {
+      throw new Error('Last message must be from user');
+    }
     
-    // Send message and get response
-    const result = await chat.sendMessage(userMessageWithContext);
+    // Combine system instructions with user message for the most recent query
+    const enhancedUserMessage = `${systemPrompt}\n\nUser query: ${lastUserMessage.content}`;
+    
+    // Properly format chat history for Gemini
+    // Important: We'll use a different approach that doesn't rely on the history parameter
+    // since that's causing the validation error
+    
+    // Create a new chat instance (without history in constructor)
+    const chat = model.startChat({
+      generationConfig: {
+        temperature: 0.7,
+        maxOutputTokens: 500,
+      },
+      safetySettings,
+    });
+    
+    // For all previous messages (except the last one), send them one by one to build up history
+    if (messages.length > 1) {
+      for (let i = 0; i < messages.length - 1; i += 2) {
+        // We need to process messages in user-assistant pairs
+        if (i + 1 < messages.length - 1) {
+          const userMsg = messages[i].role === 'user' ? messages[i] : messages[i + 1];
+          
+          // Skip if we don't have a proper user message
+          if (userMsg.role !== 'user') continue;
+          
+          // Send previous messages to build history (but don't use the responses)
+          await chat.sendMessage(userMsg.content);
+        }
+      }
+    }
+    
+    // Finally, send the enhanced user message and return the response
+    const result = await chat.sendMessage(enhancedUserMessage);
     return result.response.text();
   } catch (error) {
     console.error('Gemini AI API Error:', error);
