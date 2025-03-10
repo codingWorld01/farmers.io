@@ -24,7 +24,6 @@ export function ChatBot() {
   const [showLanguageSelector, setShowLanguageSelector] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  // Indian language options
   const languageOptions: LanguageOption[] = [
     { code: 'en', name: 'English', nativeName: 'English' },
     { code: 'hi', name: 'Hindi', nativeName: 'हिन्दी' },
@@ -46,7 +45,6 @@ export function ChatBot() {
     scrollToBottom();
   }, [messages]);
 
-  // Show welcome message when chat opens
   useEffect(() => {
     if (isOpen && messages.length === 0) {
       setMessages([
@@ -60,7 +58,6 @@ export function ChatBot() {
 
   const handleSend = async () => {
     if (!input.trim() || isLoading) return;
-
     const userMessage = input.trim();
     setInput('');
     setMessages(prev => [...prev, { role: 'user', content: userMessage }]);
@@ -83,8 +80,6 @@ export function ChatBot() {
   const changeLanguage = (languageCode: string) => {
     i18n.changeLanguage(languageCode);
     setShowLanguageSelector(false);
-    
-    // Add a system message about language change
     setMessages(prev => [
       ...prev, 
       { 
@@ -98,57 +93,56 @@ export function ChatBot() {
     <Dialog.Root open={isOpen} onOpenChange={setIsOpen}>
       <Dialog.Trigger asChild>
         <button
-          className="fixed bottom-4 right-4 bg-green-600 text-white p-4 rounded-full shadow-lg hover:bg-green-700 transition-colors"
+          className="fixed bottom-4 right-4 bg-green-600 text-white p-3 sm:p-4 rounded-full shadow-lg hover:bg-green-700 transition-colors z-50"
           aria-label="Open chat"
         >
-          <MessageSquare className="h-6 w-6" />
+          <MessageSquare className="h-5 w-5 sm:h-6 sm:w-6" />
         </button>
       </Dialog.Trigger>
 
       <Dialog.Portal>
-        <Dialog.Overlay className="fixed inset-0 bg-black/50" />
-        <Dialog.Content className="fixed bottom-4 right-4 w-full max-w-md bg-white rounded-lg shadow-xl">
+        <Dialog.Overlay className="fixed inset-0 bg-black/50 z-40" />
+        <Dialog.Content className="fixed bottom-0 right-0 w-full max-w-md sm:bottom-4 sm:right-4 h-[90vh] sm:h-auto bg-white rounded-t-2xl sm:rounded-lg shadow-xl z-50">
           <div className="flex items-center justify-between p-4 border-b">
-            <Dialog.Title className="text-lg font-semibold">
+            <Dialog.Title className="text-base sm:text-lg font-semibold">
               {t('chat.title', 'Farming Assistant')}
             </Dialog.Title>
             <div className="flex items-center space-x-2">
               <button 
                 onClick={() => setShowLanguageSelector(!showLanguageSelector)}
-                className="text-gray-500 hover:text-gray-700 transition-colors"
+                className="text-gray-500 hover:text-gray-700 transition-colors p-1"
                 title={t('chat.changeLanguage', 'Change Language')}
               >
-                <Globe className="h-5 w-5" />
+                <Globe className="h-4 w-4 sm:h-5 sm:w-5" />
               </button>
-              <Dialog.Close className="text-gray-400 hover:text-gray-500">
-                <X className="h-5 w-5" />
+              <Dialog.Close className="text-gray-400 hover:text-gray-500 p-1">
+                <X className="h-4 w-4 sm:h-5 sm:w-5" />
               </Dialog.Close>
             </div>
           </div>
 
-          {/* Language selector */}
           {showLanguageSelector && (
             <div className="max-h-48 overflow-y-auto p-3 border-b bg-gray-50">
-              <div className="grid grid-cols-2 gap-2">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
                 {languageOptions.map((lang) => (
                   <button
                     key={lang.code}
                     onClick={() => changeLanguage(lang.code)}
-                    className={`text-left px-3 py-2 rounded-md transition-colors ${
+                    className={`text-left px-2 py-1 sm:px-3 sm:py-2 rounded-md transition-colors text-sm ${
                       i18n.language === lang.code 
                         ? 'bg-green-100 text-green-800' 
                         : 'hover:bg-gray-100'
                     }`}
                   >
                     <div className="font-medium">{lang.name}</div>
-                    <div className="text-sm text-gray-600">{lang.nativeName}</div>
+                    <div className="text-xs text-gray-600">{lang.nativeName}</div>
                   </button>
                 ))}
               </div>
             </div>
           )}
 
-          <div className="h-[400px] overflow-y-auto p-4 space-y-4">
+          <div className="flex-1 h-[calc(90vh-170px)] sm:h-[400px] overflow-y-auto p-4 space-y-4">
             {messages.map((message, index) => (
               <div
                 key={index}
@@ -157,7 +151,7 @@ export function ChatBot() {
                 }`}
               >
                 <div
-                  className={`max-w-[80%] rounded-lg p-3 ${
+                  className={`max-w-[85%] sm:max-w-[80%] rounded-lg p-3 text-sm sm:text-base ${
                     message.role === 'user'
                       ? 'bg-green-600 text-white'
                       : 'bg-gray-100 text-gray-900'
@@ -170,7 +164,7 @@ export function ChatBot() {
             {isLoading && (
               <div className="flex justify-start">
                 <div className="bg-gray-100 rounded-lg p-3">
-                  <Loader2 className="h-5 w-5 animate-spin" />
+                  <Loader2 className="h-4 w-4 sm:h-5 sm:w-5 animate-spin" />
                 </div>
               </div>
             )}
@@ -190,14 +184,14 @@ export function ChatBot() {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 placeholder={t('chat.placeholder', 'Type your farming question...')}
-                className="flex-1 border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
+                className="flex-1 border rounded-lg px-3 py-2 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-green-500"
               />
               <button
                 type="submit"
                 disabled={isLoading || !input.trim()}
                 className="bg-green-600 text-white p-2 rounded-lg hover:bg-green-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                <Send className="h-5 w-5" />
+                <Send className="h-4 w-4 sm:h-5 sm:w-5" />
               </button>
             </form>
           </div>
