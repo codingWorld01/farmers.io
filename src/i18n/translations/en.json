@@ -1,0 +1,68 @@
+{
+  "common": {
+    "search": "Search",
+    "categories": "Categories",
+    "location": "Location",
+    "price": "Price",
+    "contact": "Contact",
+    "submit": "Submit",
+    "addProduct": "Add Product",
+    "productName": "Product Name",
+    "category": "Category",
+    "pricePerUnit": "Price per Unit",
+    "quantity": "Quantity",
+    "description": "Description",
+    "uploadImages": "Upload Images",
+    "dragAndDrop": "or drag and drop",
+    "uploadFile": "Upload a file",
+    "equipmentType": "Equipment Type",
+    "rentalDuration": "Rental Duration",
+    "startDate": "Start Date",
+    "endDate": "End Date",
+    "purpose": "Purpose",
+    "contactInfo": "Contact Information",
+    "fullName": "Full Name",
+    "phoneNumber": "Phone Number",
+    "apply": "Apply",
+    "clear": "Clear",
+    "sortBy": "Sort by",
+    "priceRange": "Price Range"
+  },
+  "nav": {
+    "marketplace": "Marketplace",
+    "addProduct": "Add Product",
+    "rentEquipment": "Rent Equipment",
+    "language": "Language"
+  },
+  "marketplace": {
+    "title": "Farmer's Marketplace",
+    "searchPlaceholder": "Search for products...",
+    "filters": {
+      "title": "Filters",
+      "category": "Category",
+      "location": "Location",
+      "priceRange": "Price Range",
+      "categories": {
+        "grains": "Grains",
+        "vegetables": "Vegetables",
+        "fruits": "Fruits",
+        "pulses": "Pulses",
+        "spices": "Spices",
+        "dairy": "Dairy Products"
+      },
+      "sort": {
+        "priceLowToHigh": "Price: Low to High",
+        "priceHighToLow": "Price: High to Low",
+        "newest": "Newest",
+        "popular": "Popular"
+      }
+    },
+    "noResults": "No results found",
+    "perKg": "per kg"
+  },
+  "chat": {
+    "title": "Farmer Assistant",
+    "placeholder": "Type your message...",
+    "error": "Sorry, I encountered an error. Please try again later."
+  }
+}

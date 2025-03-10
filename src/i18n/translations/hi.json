@@ -1,0 +1,68 @@
+{
+  "common": {
+    "search": "खोज",
+    "categories": "श्रेणियाँ",
+    "location": "स्थान",
+    "price": "कीमत",
+    "contact": "संपर्क करें",
+    "submit": "जमा करें",
+    "addProduct": "उत्पाद जोड़ें",
+    "productName": "उत्पाद का नाम",
+    "category": "श्रेणी",
+    "pricePerUnit": "प्रति यूनिट कीमत",
+    "quantity": "मात्रा",
+    "description": "विवरण",
+    "uploadImages": "छवियां अपलोड करें",
+    "dragAndDrop": "या खींचें और छोड़ें",
+    "uploadFile": "फ़ाइल अपलोड करें",
+    "equipmentType": "उपकरण का प्रकार",
+    "rentalDuration": "किराये की अवधि",
+    "startDate": "आरंभ तिथि",
+    "endDate": "समाप्ति तिथि",
+    "purpose": "उद्देश्य",
+    "contactInfo": "संपर्क जानकारी",
+    "fullName": "पूरा नाम",
+    "phoneNumber": "फ़ोन नंबर",
+    "apply": "लागू करें",
+    "clear": "साफ़ करें",
+    "sortBy": "क्रमबद्ध करें",
+    "priceRange": "मूल्य सीमा"
+  },
+  "nav": {
+    "marketplace": "मार्केटप्लेस",
+    "addProduct": "उत्पाद जोड़ें",
+    "rentEquipment": "उपकरण किराए पर लें",
+    "language": "भाषा"
+  },
+  "marketplace": {
+    "title": "किसान का बाज़ार",
+    "searchPlaceholder": "उत्पादों की खोज करें...",
+    "filters": {
+      "title": "फ़िल्टर",
+      "category": "श्रेणी",
+      "location": "स्थान",
+      "priceRange": "मूल्य सीमा",
+      "categories": {
+        "grains": "अनाज",
+        "vegetables": "सब्जियां",
+        "fruits": "फल",
+        "pulses": "दालें",
+        "spices": "मसाले",
+        "dairy": "डेयरी उत्पाद"
+      },
+      "sort": {
+        "priceLowToHigh": "कीमत: कम से ज्यादा",
+        "priceHighToLow": "कीमत: ज्यादा से कम",
+        "newest": "नवीनतम",
+        "popular": "लोकप्रिय"
+      }
+    },
+    "noResults": "कोई परिणाम नहीं मिला",
+    "perKg": "प्रति किलो"
+  },
+  "chat": {
+    "title": "किसान सहायक",
+    "placeholder": "अपना संदेश लिखें...",
+    "error": "क्षमा करें, एक त्रुटि हुई। कृपया बाद में पुनः प्रयास करें।"
+  }
+}
